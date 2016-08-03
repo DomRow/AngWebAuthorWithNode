@@ -1,0 +1,52 @@
+<div class="form left panel col-md-3" ng-controller="AddPageCtrl">
+	<h2>New Page</h2>		
+	<table>
+		<form>	
+			<tr>	
+				<td><label>No: </label></td>
+				<td><input name="page_number" type="text" value="{{ page_number}}" ng-model="page.page_number" required/></td>
+			</tr>	
+			<tr>
+				<td><label>Title: </label></td>
+				<td><input name="title" type="text" value="{{ page.title }}" ng-model="page.title" required/></td>
+			</tr>
+			<!-- <tr>
+				<td><label>JSON: </label></td>
+				<td><input name="jsonObj" type="text" value="{{ page.jsonObj }}" ng-model="page.jsonObj" /></td>
+			</tr> -->
+			<tr>
+				<td><label>CSS Template: </label></td>
+				<td><input name="css" type="text" value="{{ page.cssPage }}" ng-model="page.cssPage" required/></td>
+				
+			</tr>
+			<!-- <tr>
+				<td><label>CSS Template: </label></td>
+				<td><select class="form-control" ng-model="page.cssPage" ng-options="layout for layout in layouts" ng-change="cssEvent(e,item)"></td>
+				
+			</tr>	 -->
+			<tr>
+				<td><ul class="list-inline"><li><button class="btn"  ng-click="addPage()">Add Page</button></li></td>
+				<td><li><button class="btn" ng-click="cancelPage()">Cancel</button></li></ul></td>
+			</tr>	
+		</form>
+	</table>	
+	<!-- section to select styles -->
+    <!-- <div class="well">
+        <form>
+
+            <div class="form-group">
+                <label>Theme</label>
+                <select class="form-control" ng-model="css" ng-options="bootstrap.url as bootstrap.name for bootstrap in bootstraps">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Layout</label>
+                <select class="form-control" ng-model="layout" ng-options="layout.url as layout.name for layout in layouts"></select>
+            </div>
+
+        </form>
+    </div> -->
+
+    <hr>
+</div>
