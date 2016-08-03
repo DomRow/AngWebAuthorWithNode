@@ -2,18 +2,30 @@
 A web authoring tool that allows re-construction of pages from JSON.
 
 ## Setup
-First download the zip file associated with this project and extract it to a folder on your server.
+First download the zip file or clone this repository to a directory of your choice.
+Install NodeJs on your system.
+Install MongoDB on your system.
 
-Create a 'pages' database in your SQL server.
-Import the 'page.sql' file to the 'pages' database - this will create the page table.
+Open a command line window and change directory to where the project is located.
 
-Go to the 'structure' tab in the table and change the 'jsonObj' column.
-  1 Change the "MIME type" to 'text/plain'
-  2 Change the "Browser Display Transform" to 'JSON (text/plain: JSON)'
-  3 Change the "Input Transformation" to 'JSON (text/plain: JSONEditor)'
-   
-This will display the hex string as their original formats.
+$ cd C:/myProjects/AngWebAuthorWithNode
 
-Within the "index.php" file in the 'api' folder, change the connection properties to your local settings to allow access for the connection object.
+Once this is done, tell the Node package manager (npm) to install the requirements listed in the package.json file
 
-Proceed to your server/localhost address to run the project.
+$ npm install -r package.json --save
+
+Now the project and it's dependencies are installed. Open a second command window and change directory to where mongo is installed, and then to the binaries folder:
+
+$ cd c:/mongo/bin
+
+Once this is done, the database location needs to be set. Create a folder somewhere called "data", and tell mongo to use this as it's storage location with this command:
+
+$ mongod --dbpath C:\Users\user\Desktop\data
+
+This folder does not need to be located in the project directory.
+
+Then open a third command line window and change directory to the project location. This command will start the server on port 8090:
+
+$ nodemon server.js
+
+Proceed to localhost:8090 to view the homepage.
