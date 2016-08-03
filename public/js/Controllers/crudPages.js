@@ -1,16 +1,16 @@
 /*
-	This file contains the 
-	*/
-	var mainURL = "http://localhost/angProj/api/pages";
-
-/*
 	Global control makes the page objects returned from the DB accessible by the other controllers.
 	Thus acting as a parent scope
 	*/
 	myApp.controller('GlobalCtrl', ['$scope', '$window', 'PagesFactory','PageFactory',
 		function($scope, $window, PagesFactory, PageFactory){
 			$scope.pages = PagesFactory.query(function(data){
-				$scope.pages = data.page;
+				
+				$scope.pages = data;
+				//scope.pages is an array of Resource objects
+				console.log($scope.pages);
+			},function(err){
+				console.log(err);
 			})
 
 			$scope.$on('eventSend', function(e, data){
@@ -45,7 +45,7 @@
 		console.log(data);
 		To print see*/
 		$scope.pages = PagesFactory.query(function(data){
-			$scope.pages = data.page;
+			$scope.pages = data;
 		});
 	}]);
 

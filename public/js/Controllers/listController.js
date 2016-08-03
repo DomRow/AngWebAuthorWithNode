@@ -117,7 +117,7 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
 
     $scope.$on('eventSend', function(event,data){  
         var num = $scope.pageToLoad = data;
-        
+        console.log(data);
         //$scope.pageObject = $scope.pageArray[num];
 
         $scope.pageObj = PageFactory.get({id : data},

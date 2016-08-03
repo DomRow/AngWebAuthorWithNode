@@ -1,7 +1,7 @@
 /*THis factory is used to load resources in the app*/
 myApp.factory("PagesFactory", function($resource){
 	return $resource("/projects", {},{
-		query:{ method:'GET', isArray: false },
+		query:{ method:'GET', isArray: true },
 		create:{ method: "POST" }
 	})
 });

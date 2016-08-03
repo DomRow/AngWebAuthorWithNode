@@ -25,6 +25,7 @@ exports.findAll = function(req,res){
 	db.collection('project', function(err, collection){
 		collection.find().toArray(function(err, items){
 			res.send(items);
+			
 		});
 	});
 };
@@ -94,7 +95,9 @@ exports.deleteproject = function(req,res){
 
 var populateDB = function(){
 	var project = [
-		{"columns":[{"items":[{"id":0,"type":"image","image":{"src":"images/shipyard1.jpg","width":100,"height":100,"align":"center"}},{"id":1,"type":"text","headerStyle":"color:blue;margin-left:30px;","headerText":"Header","text":"Other Text text","size":12,"font":"Arial"}]}]}
+		{"columns":[{"items":[{"id":0,"type":"image","image":{"src":"images/shipyard1.jpg","width":100,"height":100,"align":"center"}},{"id":1,"type":"text","headerStyle":"color:blue;margin-left:30px;","headerText":"Header","text":"Other Text text","size":12,"font":"Arial"}]}]},
+		{"columns":[{"items":[{"id":0,"type":"image","image":{"src":"images/construction1.jpg","width":100,"height":100,"align":"center"}},{"id":1,"type":"text","headerStyle":"color:red;margin-left:30px;","headerText":"Header 2","text":"New separate page","size":12,"font":"Arial"}]}]}
+
 	]
 
 	db.collection('project', function(err, collection){
