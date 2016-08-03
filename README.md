@@ -24,4 +24,8 @@ $ mongod --dbpath C:\Users\user\Desktop\data
 
 This folder does not need to be located in the project directory.
 
-Proceed to your server/localhost address to run the project.
+Then open a third command line window and change directory to the project location. This command will start the server on port 8090:
+
+$ nodemon server.js
+
+Proceed to localhost:8090 to view the homepage.
