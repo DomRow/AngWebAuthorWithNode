@@ -99,16 +99,22 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
         console.log("update");
         //json component
         var jsonPage = $scope.pageObject;
-        console.log(jsonPage);
-        var jsonString = $scope.jsonString = JSON.stringify(jsonPage);
+        console.log(typeof($scope.pageObject));
+        console.log($scope.pageObject.columns[0].items[0].cssClass);        
+        console.log($scope.pageObject.columns[0].items[1].cssClass);        
+        //var jsonString = $scope.jsonString = JSON.stringify(jsonPage);
         //full object ie page/id/proj/jsonObj
-        var fullPageObject = $scope.pageObj;
-        $scope.pageClassToBeUploaded = {page_number:fullPageObject.page_number,title:fullPageObject.title, body:jsonPage};
+        //var fullPageObject = $scope.pageObj;
+        $scope.pageClassToBeUploaded = $scope.pageObject;
         console.log($scope.pageClassToBeUploaded);
-        console.log($scope.pageObjectAll._id);
-        $scope.pageWithNewClasses = PageFactory.update({id:$scope.pageObjectAll._id}, $scope.pageClassToBeUploaded);
-    };  
+        $scope.pageWithNewClasses = function(){
+            PageFactory.update({id:$scope.pageObjectAll._id}, $scope.pageClassToBeUploaded);
+        };
 
+        $scope.pageWithNewClasses();
+
+    };  
+    /*ON CLICK OF TEXT WITHIN DIV NAMED*/
     $scope.tinyMceLoad = function(){
         console.log("Text Area Click");
         $scope.showMce = !$scope.showMce;
@@ -122,8 +128,8 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
             function(page){
                 $scope.pageObjectAll = page;
                 console.log($scope.pageObjectAll);
-                $scope.pageObject = page.body.value;                            
-                console.log($scope.pageObject);
+                $scope.pageObject = page.body;                            
+                console.log($scope.pageObject.columns[0].items[0].cssClass);
         })
     })
 
@@ -164,9 +170,7 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
         //bind width & height?
     }
 
-    //$scope.pageNumber = pageObject.page_number;
-
-    // // Generate initial model
+    /*Generate initial model in JSON format*/
     // for (var i = 1; i <= 3; ++i) {
     //     $scope.models.lists.A.push({label: "Image" + i});
     //     $scope.models.lists.B.push({label: "Item B" + i});

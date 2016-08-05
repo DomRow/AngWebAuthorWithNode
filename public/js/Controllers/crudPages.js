@@ -118,13 +118,13 @@
 				BroadCastFactory.prepForBroadcast(e,css);	
 			}
 
-			$scope.other = ['Option B', 'Option C'];
+			$scope.other = ['Option B', 'Option'];
 
 			$scope.data = {
 				availableOptions: [
-				{value: {'columns':[{'items':[{'id':0,'cssClass':'defaultClass1','type':'image','image':{'src':'images/construction1.jpg','width':'100','height':'100','align':'center'}},{'id':1,'cssClass':'defaultClass2','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]}},
-				{value: $scope.other[0]},
-				{value: $scope.other[1]}
+				{'columns':[{'items':[{'id':0,'cssClass':'defaultClass1','type':'image','image':{'src':'images/construction1.jpg','width':'100','height':'100','align':'center'}},{'id':1,'cssClass':'defaultClass2','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]},
+				{'columns':[{'items':[{'id':0,'cssClass':'defaultClass5','type':'image','image':{'src':'','width':'','height':'','align':'center'}},{'id':1,'cssClass':'defaultClass6','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]}				
+		
 				]
 			};
 
