@@ -89,13 +89,11 @@
 			};
 
 			$scope.$on('eventSend', function(event,data){
-				console.log(data);
-
+				$scope.pageNumber = data;	
 				console.log($scope.pageNumber);
-
 			});
 
-			$scope.pageNumber = 3;
+			
 
 			$scope.deletePage = function(){
 				console.log("delete page clicked");
@@ -122,10 +120,19 @@
 				BroadCastFactory.prepForBroadcast(e,css);	
 			}
 
-			$scope.layouts = {1:"cols2",2:"cols2h",3:3};
+			$scope.other = 'Option BaaZ';
 
-			$scope.layout = $scope.layouts[0];
-	}]);
+			$scope.data = {
+				availableOptions: [
+				{value: {'columns':[{'items':[{'id':0,'cssClass':'defaultClass1','type':'image','image':{'src':'images/construction1.jpg','width':'100','height':'100','align':'center'}},{'id':1,'cssClass':'defaultClass2','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]}},
+				{value: $scope.other},
+				{value: 'Option C'}
+				]
+			};
+
+
+
+		}]);
 
 myApp.controller('PageDetailCtrl', ['$scope','$routeParams','PageFactory','$window',
 	function($scope, $routeParams, PageFactory, $window){

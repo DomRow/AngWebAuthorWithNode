@@ -10,7 +10,7 @@
 		<div ng-controller="GetListCtrl">
 			<ul>
 				<li  ng-repeat="page in pages">
-					<a href="#" data-id="{{page._id}}" content-pop class="list-group-item" ng-click="displayHtml(e,page.id)" >X {{page.title}}</a>
+					<a href="#" data-id="{{page._id}}" content-pop class="list-group-item" ng-click="displayHtml(e,page._id)" >X {{page.title}}</a>
 				</li>
 			</ul>
 

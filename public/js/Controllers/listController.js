@@ -63,9 +63,6 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
     $scope.my = { message2: false };
     $scope.toggleClass2 = function(){
         console.log("toggle 2");
-        //$scope.my.message   = !$scope.my.message;
-        //$scope.my.message2   = !$scope.my.message2;
-        
         //cycle through classes array and bind new value to columns object
         $scope.pageObject.columns[0].items[0].cssClass = "defaultClass3";
         $scope.pageObject.columns[0].items[1].cssClass = "defaultClass4";
@@ -102,11 +99,14 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
         console.log("update");
         //json component
         var jsonPage = $scope.pageObject;
+        console.log(jsonPage);
         var jsonString = $scope.jsonString = JSON.stringify(jsonPage);
         //full object ie page/id/proj/jsonObj
         var fullPageObject = $scope.pageObj;
-        $scope.pageClassToBeUploaded = {page_number:fullPageObject.page_number,title:fullPageObject.title, jsonObj:jsonString};
-        $scope.pageWithNewClasses = PageFactory.update({id:$scope.pageObj.id}, $scope.pageClassToBeUploaded);
+        $scope.pageClassToBeUploaded = {page_number:fullPageObject.page_number,title:fullPageObject.title, body:jsonPage};
+        console.log($scope.pageClassToBeUploaded);
+        console.log($scope.pageObjectAll._id);
+        $scope.pageWithNewClasses = PageFactory.update({id:$scope.pageObjectAll._id}, $scope.pageClassToBeUploaded);
     };  
 
     $scope.tinyMceLoad = function(){
@@ -117,21 +117,13 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
 
     $scope.$on('eventSend', function(event,data){  
         var num = $scope.pageToLoad = data;
-        console.log(data);
-        //$scope.pageObject = $scope.pageArray[num];
 
-        $scope.pageObj = PageFactory.get({id : data},
+        $scope.pageObj = PageFactory.get({id : num},
             function(page){
-                $scope.pageLoad = page;
-                $scope.pageObject = page.toJSON(page)
-                console.log(page);
-                //console.log($scope.pageObject.jsonObj);
-                var jsonTest = $scope.pageObject.jsonObj;
-                console.log(jsonTest);
-                // console.log(JSON.stringify(jsonTest));
-
-                $scope.pageObject = eval("("+jsonTest+")");             
-                return $scope.pageObject;             
+                $scope.pageObjectAll = page;
+                console.log($scope.pageObjectAll);
+                $scope.pageObject = page.body.value;                            
+                console.log($scope.pageObject);
         })
     })
 

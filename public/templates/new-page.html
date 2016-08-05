@@ -10,15 +10,19 @@
 				<td><label>Title: </label></td>
 				<td><input name="title" type="text" value="{{ page.title }}" ng-model="page.title" required/></td>
 			</tr>
-			<!-- <tr>
-				<td><label>JSON: </label></td>
-				<td><input name="jsonObj" type="text" value="{{ page.jsonObj }}" ng-model="page.jsonObj" /></td>
-			</tr> -->
 			<tr>
 				<td><label>CSS Template: </label></td>
 				<td><input name="css" type="text" value="{{ page.cssPage }}" ng-model="page.cssPage" required/></td>
 				
 			</tr>
+			<!-- <tr>
+				<td><label>Body: </label></td>
+				<td><input name="body" type="text" value="{{ page.body }}" ng-model="page.body" /></td>
+			</tr> -->
+			<tr>
+				<td><label>Layouts: </label></td>
+			    <td><select name="singleSelect" ng-model="page.body" ng-options="option.value for option in data.availableOptions"></select></td>
+			</tr>	
 			<!-- <tr>
 				<td><label>CSS Template: </label></td>
 				<td><select class="form-control" ng-model="page.cssPage" ng-options="layout for layout in layouts" ng-change="cssEvent(e,item)"></td>

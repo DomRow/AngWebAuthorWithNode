@@ -47,8 +47,10 @@ exports.findById = function(req,res){
 
 exports.addproject = function(req,res){
 	var project = req.body;
-	console.log('Adding project:' +JSON.stringify(project));
+	console.log('Adding project:' + JSON.stringify(project));
+
 	db.collection('project', function(err, collection){
+
 		collection.insert(project, {safe:true}, function(err, result){
 			if(err){
 				res.send({'error': 'An error has occurred'});
@@ -63,10 +65,10 @@ exports.addproject = function(req,res){
 exports.updateproject = function(req,res){
 	var id = req.params.id;
 	var project = req.body;
-	console.log('Update item: ' + id);
-	console.log(JSON.stringify(project));
+	console.log(project);
 	db.collection('project', function(err, collection){
-		collection.update({'_id':new BSONObjectID(id)}, project, {safe:true}, function(err, result){
+		var collection = db.collection('project');
+		collection.update({'_id':id}, project, {safe:true}, function(err, result){
 			if(err) {
 				console.log('Error updating item: ' + err);
 				res.send({'error':'An error occurred'});

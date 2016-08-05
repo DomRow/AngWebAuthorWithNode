@@ -3,20 +3,20 @@ var myApp = angular.module('dropTests',['ngRoute','ngDragDrop','ngSanitize', 'ng
 myApp.config(['$routeProvider',
   function($routeProvider) {
   $routeProvider.
-  when('/pages',{
+  when('/projects',{
     templateUrl: 'templates/pageList.html',
     controller: 'GetListCtrl'
   }).
-  when('/pages/new', {
+  when('/projects/new', {
   	templateUrl: 'templates/new-page.html',
   	controller: 'AddPageCtrl'
   }).
-  when('/pages/:id', {
+  when('/projects/:id', {
     templateUrl: 'templates/page-detail.html',
     controller: 'PageDetailCtrl'
   }).
   otherwise({
-  	redirectTo: '/pages'
+  	redirectTo: '/projects'
   });
 }]);
 

@@ -15,11 +15,13 @@ var app = express();
 //var router = express.Router();
 
 //Middleware
+app.use(logger('tiny'));
 app.use(express.static(__dirname + '/public'));                                                        
-//app.use(bodyParser.urlencoded({'extended':'true'}));            
+
+app.use(bodyParser.urlencoded({'extended':'true'}));            
 app.use(bodyParser.json());                                     
-//app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
-//app.set('views', path.join(__dirname, 'views'));
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+
 
 //Routes
 app.get('/projects', project.findAll);
