@@ -80,18 +80,16 @@
 					console.log("Page save");
 					$scope.reloadPages();
 					$window.location.href = '#/projects';
-			}, function(err){
-				console.log(err);
-				console.log($scope.page);
-			});
+				}, function(err){
+					console.log(err);
+					console.log($scope.page);
+				});
 			};
 
 			$scope.$on('eventSend', function(event,data){
 				$scope.pageNumber = data;	
 				console.log($scope.pageNumber);
 			});
-
-			
 
 			$scope.deletePage = function(){
 				console.log("delete page clicked");
@@ -124,26 +122,13 @@
 				availableOptions: [
 				{'columns':[{'items':[{'id':0,'cssClass':'defaultClass1','type':'image','image':{'src':'images/construction1.jpg','width':'100','height':'100','align':'center'}},{'id':1,'cssClass':'defaultClass2','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]},
 				{'columns':[{'items':[{'id':0,'cssClass':'defaultClass5','type':'image','image':{'src':'','width':'','height':'','align':'center'}},{'id':1,'cssClass':'defaultClass6','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]}				
-		
+
 				]
 			};
 
 
 
 		}]);
-
-// myApp.controller('PageDetailCtrl', ['$scope','$routeParams','PageFactory','$window',
-// 	function($scope, $routeParams, PageFactory, $window){
-
-// 		$scope.updatePage = function () {
-// 			PageFactory.update($scope.page);
-// 			$window.location.href = '#/pages';
-// 		};
-
-// 		$scope.page = PageFactory.show({id: $routeParams.id});
-
-// 	}]);
-
 
 myApp.controller('ContentCtrl', ['$scope', 'PagesFactory','BroadCastFactory','PageFactory',
 	function($scope, PagesFactory, BroadCastFactory, PageFactory){

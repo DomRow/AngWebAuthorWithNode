@@ -1,35 +1,33 @@
 /*
     Element List Area Ctrl
-*/
+    */
+    myApp.controller('ElementCtrl', ['$scope','BroadCastFactory', function($scope, BroadCastFactory){
+        $scope.elements = {
+            1 : '<img>',
+            2 : '<article></article>',
+            3 : '<textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>'
+        }
+        $scope.addElement = function(e,ele){
+            $scope.event = e = 'elementSend';
+            BroadCastFactory.prepForBroadcast(e,ele);
+        };
 
-myApp.controller('ElementCtrl', ['$scope','BroadCastFactory', function($scope, BroadCastFactory){
-    $scope.elements = {
-        1 : '<img>',
-        2 : '<article></article>',
-        3 : '<textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>'
-    }
-    $scope.addElement = function(e,ele){
-        $scope.event = e = 'elementSend';
-        BroadCastFactory.prepForBroadcast(e,ele);
-    };
+    }])
 
-}])
+    myApp.controller("ElementListCtrl", ['$scope', 'BroadCastFactory','ModalService', function($scope, BroadCastFactory, ModalService) {
 
-myApp.controller("ElementListCtrl", ['$scope', 'BroadCastFactory','ModalService', function($scope, BroadCastFactory, ModalService) {
+        $scope.models = {
+            selected: null,
+            lists: {"A": []}
+        };
 
-    $scope.models = {
-        selected: null,
-        lists: {"A": []}
-    };
+        $scope.show = {message : false};
 
-    $scope.show = {message : false};
-
-    var tags = $scope.dataItems = ["Image"];
+        var tags = $scope.dataItems = ["Image"];
 
     // Generate initial model
     for (var i = 0; i <= tags.length; i++) {
         $scope.models.lists.A.push({label: tags[i]});
-        //$scope.models.lists.B.push({label: "Text"});
     }
 
     // Model to JSON for demo purpose
@@ -48,15 +46,15 @@ myApp.controller("ElementListCtrl", ['$scope', 'BroadCastFactory','ModalService'
 
 /*
     Content Area Ctrl for Drop Elements
-*/
-myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',function($scope,PageFactory, $routeParams) {
+    */
+    myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',function($scope,PageFactory, $routeParams) {
 
-    $scope.my = { message: false };
-    $scope.toggleClass1 = function(){
-        console.log("toggle 1");
-        $scope.pageObject.columns[0].items[0].cssClass = "defaultClass5";
-        $scope.pageObject.columns[0].items[1].cssClass = "defaultClass6";
-        //$scope.my.message = !$scope.my.message;        
+        $scope.my = { message: false };
+        $scope.toggleClass1 = function(){
+            console.log("toggle 1");
+            $scope.pageObject.columns[0].items[0].cssClass = "defaultClass5";
+            $scope.pageObject.columns[0].items[1].cssClass = "defaultClass6";
+               
         
     }
 
@@ -75,7 +73,7 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
         $scope.pageObject.columns[0].items[0].cssClass = "defaultClass7";
         $scope.pageObject.columns[0].items[1].cssClass = "defaultClass8";
         $scope.pageObject.columns[0].items[2] = {"cssClass":"defaultClass9"};
-        console.log($scope.pageObject.columns[0].items[2]);
+        console.log($scope.pageObject);
         //toggle 3rd div
         $scope.addDiv3 = {boolean:true};
         
@@ -98,15 +96,9 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
     $scope.updateHtml = function(){
         console.log("update");
         //json component
+        console.log($scope.pageObject);
         var jsonPage = $scope.pageObject;
-        console.log(typeof($scope.pageObject));
-        console.log($scope.pageObject.columns[0].items[0].cssClass);        
-        console.log($scope.pageObject.columns[0].items[1].cssClass);        
-        //var jsonString = $scope.jsonString = JSON.stringify(jsonPage);
-        //full object ie page/id/proj/jsonObj
-        //var fullPageObject = $scope.pageObj;
         $scope.pageClassToBeUploaded = $scope.pageObject;
-        console.log($scope.pageClassToBeUploaded);
         $scope.pageWithNewClasses = function(){
             PageFactory.update({id:$scope.pageObjectAll._id}, $scope.pageClassToBeUploaded);
         };
@@ -117,8 +109,7 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
     /*ON CLICK OF TEXT WITHIN DIV NAMED*/
     $scope.tinyMceLoad = function(){
         console.log("Text Area Click");
-        $scope.showMce = !$scope.showMce;
-        console.log($scope.showMce);
+        $scope.mceVisibility = {boolean: true};
     }
 
     $scope.$on('eventSend', function(event,data){  
@@ -130,7 +121,7 @@ myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',funct
                 console.log($scope.pageObjectAll);
                 $scope.pageObject = page.body;                            
                 console.log($scope.pageObject.columns[0].items[0].cssClass);
-        })
+            })
     })
 
     $scope.$on('elementSend', function(event, data){

@@ -9,18 +9,6 @@ myApp.directive("goFor", function(){
 })
 
 
-// myApp.directive('classTest', function(){
-//   return{
-//     restrict: 'E',
-//     scope:{
-//       value: "="
-//     },
-//     template:
-//       '<div class=' +value[0] + '>Test</div>',
-//     replace: true  
-//   }
-// });
-
 myApp.directive('classRem', function(){
  return function(scope, element, attrs) {
   

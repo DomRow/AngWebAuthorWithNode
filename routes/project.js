@@ -71,27 +71,23 @@ exports.updateproject = function(req,res){
 		db.collection('project', function(err, collection){
 			collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item){
 				if(err){return err;}
-
 				var update = req.body;
+				console.log(req.body.columns[0].items);
 				var collection = db.collection('project');
-
-
 			//collection.update({'_id':id},{$set :{'body':req.body}}, {safe:true}, function(err, result){
-				collection.update({'_id': new BSON.ObjectID(id)},{$set:{'body':update}});	
-				// if(err) {
-				// 	console.log('Error updating item: ' + err);
-				// 	res.send({'error':'An error occurred'});
-				// }else{
-				// 	console.log("ELSE LOG STARTED ----------");
-
-				// 	console.log('', + result+ ' documents(s) updated');
-
-				// 	console.log(update);
-				// 	res.send(update);
-				// }
-			//});
-});
-});
+				collection.update({'_id': new BSON.ObjectID(id)},{$set:{'body':update}},{safe:true}, function(error, result){	
+					if(err) {
+						console.log('Error updating item: ' + err);
+						res.send({'error':'An error occurred'});
+					}else{
+						console.log("ELSE LOG STARTED ----------");
+						console.log('', + result+ ' documents(s) updated');
+						console.log(update);
+						res.send(update);
+					}
+				});
+			});
+		});
 }
 
 exports.deleteproject = function(req,res){
