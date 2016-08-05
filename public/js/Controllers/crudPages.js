@@ -27,16 +27,16 @@
 	myApp.controller('GetListCtrl', ['$scope', '$window', 'PagesFactory','PageFactory',
 		function($scope, $window, PagesFactory, PageFactory){
 
-			$scope.editPage = function (pageId){
-				$window.location.href = '#/page-detail/' + pageId;
-			};
+			// $scope.editPage = function (pageId){
+			// 	$window.location.href = '#/page-detail/' + pageId;
+			// };
 
 			$scope.deletePage = function (pageId){
 				console.log("Delete Page " +padeId);
 			}
 
 			$scope.newPage = function (e,ele) {
-				$window.location.href = ('#/pages/new');
+				$window.location.href = ('#/projects/new');
 				$scope.showNewPage = {boolean:true};
 				console.log($scope.showNewPage.boolean);
 			}
@@ -78,10 +78,8 @@
 				PagesFactory.save($scope.page, function(){
 					console.log($scope.page);
 					console.log("Page save");
-				//reload pages
-				$scope.reloadPages();
-				
-				$window.location.href = '#/pages';
+					$scope.reloadPages();
+					$window.location.href = '#/projects';
 			}, function(err){
 				console.log(err);
 				console.log($scope.page);
@@ -112,7 +110,7 @@
 
 			$scope.cancelPage = function () {
 				console.log("Cancel click");
-				$window.location.href = '#/pages';
+				$window.location.href = '#/projects';
 			};
 
 			$scope.cssEvent = function(e,css){
@@ -120,13 +118,13 @@
 				BroadCastFactory.prepForBroadcast(e,css);	
 			}
 
-			$scope.other = 'Option BaaZ';
+			$scope.other = ['Option B', 'Option C'];
 
 			$scope.data = {
 				availableOptions: [
 				{value: {'columns':[{'items':[{'id':0,'cssClass':'defaultClass1','type':'image','image':{'src':'images/construction1.jpg','width':'100','height':'100','align':'center'}},{'id':1,'cssClass':'defaultClass2','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]}},
-				{value: $scope.other},
-				{value: 'Option C'}
+				{value: $scope.other[0]},
+				{value: $scope.other[1]}
 				]
 			};
 
@@ -134,17 +132,17 @@
 
 		}]);
 
-myApp.controller('PageDetailCtrl', ['$scope','$routeParams','PageFactory','$window',
-	function($scope, $routeParams, PageFactory, $window){
+// myApp.controller('PageDetailCtrl', ['$scope','$routeParams','PageFactory','$window',
+// 	function($scope, $routeParams, PageFactory, $window){
 
-		$scope.updatePage = function () {
-			PageFactory.update($scope.page);
-			$window.location.href = '#/pages';
-		};
+// 		$scope.updatePage = function () {
+// 			PageFactory.update($scope.page);
+// 			$window.location.href = '#/pages';
+// 		};
 
-		$scope.page = PageFactory.show({id: $routeParams.id});
+// 		$scope.page = PageFactory.show({id: $routeParams.id});
 
-	}]);
+// 	}]);
 
 
 myApp.controller('ContentCtrl', ['$scope', 'PagesFactory','BroadCastFactory','PageFactory',
