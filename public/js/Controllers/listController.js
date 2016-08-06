@@ -106,7 +106,7 @@
         $scope.pageWithNewClasses();
 
     };  
-    /*ON CLICK OF TEXT WITHIN DIV NAMED*/
+    /*Click function displays text editor*/
     $scope.tinyMceLoad = function(){
         console.log("Text Area Click");
         $scope.mceVisibility = {boolean: true};
@@ -118,9 +118,7 @@
         $scope.pageObj = PageFactory.get({id : num},
             function(page){
                 $scope.pageObjectAll = page;
-                console.log($scope.pageObjectAll);
                 $scope.pageObject = page.body;                            
-                console.log($scope.pageObject.columns[0].items[0].cssClass);
             })
     })
 
@@ -152,6 +150,9 @@
     $scope.dropFunc = function(e){
         console.log(e.target.attributes.type);
         console.log(e.toElement);
+        $scope.imgX = e.pageX - 260;
+        $scope.imgY = e.pageY - 130;
+
         $scope.srcVar = "";
         //onDrop - showImage
         $scope.addImage = {boolean:true}

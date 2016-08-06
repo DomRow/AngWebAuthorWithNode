@@ -5,10 +5,8 @@
 	myApp.controller('GlobalCtrl', ['$scope', '$window', 'PagesFactory','PageFactory',
 		function($scope, $window, PagesFactory, PageFactory){
 			$scope.pages = PagesFactory.query(function(data){
-				
 				$scope.pages = data;
 				//scope.pages is an array of Resource objects
-				console.log($scope.pages);
 			},function(err){
 				console.log(err);
 			})
@@ -19,39 +17,12 @@
 
 			$scope.$on('cssEvent', function(e, css){
 				$scope.layout = css;
-				console.log($scope.layout);
 			})
 		}
 		]);		
 
-	myApp.controller('GetListCtrl', ['$scope', '$window', 'PagesFactory','PageFactory',
-		function($scope, $window, PagesFactory, PageFactory){
-
-			// $scope.editPage = function (pageId){
-			// 	$window.location.href = '#/page-detail/' + pageId;
-			// };
-
-			$scope.deletePage = function (pageId){
-				console.log("Delete Page " +padeId);
-			}
-
-			$scope.newPage = function (e,ele) {
-				$window.location.href = ('#/projects/new');
-				$scope.showNewPage = {boolean:true};
-				console.log($scope.showNewPage.boolean);
-			}
-
-	/*This query (GET) is called twice, add 
-		console.log(data);
-		To print see*/
-		$scope.pages = PagesFactory.query(function(data){
-			$scope.pages = data;
-		});
-	}]);
-
 	myApp.controller('AddPageCtrl', ['$scope', '$window', '$routeParams', 'PagesFactory','BroadCastFactory', 'PageFactory',
 		function($scope, $window, $routeParams, PagesFactory, BroadCastFactory, PageFactory) {
-
 			if($routeParams.pageId === undefined){
 				$scope.page = new PagesFactory();
 			}
@@ -64,19 +35,19 @@
 					})	
 			}
 
+			/*Reload list of page objects*/
 			$scope.reloadPages = function(){
 				PagesFactory.query(function(data){
 					console.log("called");
 					$scope.pages = data.page;
 				})
 			}	
-
+			/*Create new page object using factory*/
 			$scope.addPage = function () {
 				console.log($scope.page.cssPage);
 				console.log($scope.page)
 				
 				PagesFactory.save($scope.page, function(){
-					console.log($scope.page);
 					console.log("Page save");
 					$scope.reloadPages();
 					$window.location.href = '#/projects';
@@ -86,11 +57,12 @@
 				});
 			};
 
-			$scope.$on('eventSend', function(event,data){
-				$scope.pageNumber = data;	
-				console.log($scope.pageNumber);
-			});
+			$scope.$on('eventSend', function(e, data){
+				console.log("AddPageCtrl event rec");
+				$scope.pageId = data;
+			})
 
+			/*Delete page function*/
 			$scope.deletePage = function(){
 				console.log("delete page clicked");
 				//currentPage = ?
@@ -99,10 +71,18 @@
 				//reloadPages()
 			};
 
+			/*Event handler for 'eventSend'*/
+			$scope.$on('eventSend', function(event,data){
+				var id = $scope.pageNumber = data;	
+			});
+
+
+
 			$scope.displayHtml = function(e, msg){
 				$scope.event = e = 'eventSend';
+				$scope.idVal = msg;
 				BroadCastFactory.prepForBroadcast(e,msg);
-				console.log(BroadCastFactory);
+				
 			}
 
 
@@ -118,7 +98,7 @@
 
 			$scope.other = ['Option B', 'Option'];
 
-			$scope.data = {
+			$scope.cssOptions = {
 				availableOptions: [
 				{'columns':[{'items':[{'id':0,'cssClass':'defaultClass1','type':'image','image':{'src':'images/construction1.jpg','width':'100','height':'100','align':'center'}},{'id':1,'cssClass':'defaultClass2','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]},
 				{'columns':[{'items':[{'id':0,'cssClass':'defaultClass5','type':'image','image':{'src':'','width':'','height':'','align':'center'}},{'id':1,'cssClass':'defaultClass6','type':'text','headerStyle':'color:blue;margin-left:30px;','headerText':'Header','text':'Type Text Here','size':12,'font':'Arial'}]}]}				
@@ -129,6 +109,29 @@
 
 
 		}]);
+
+	myApp.controller('GetListCtrl', ['$scope', '$window', 'PagesFactory','PageFactory',
+		function($scope, $window, PagesFactory, PageFactory){
+			// $scope.editPage = function (pageId){
+			// 	$window.location.href = '#/page-detail/' + pageId;
+			// };
+
+			// $scope.deletePage = function (pageId){
+			// 	console.log("Delete Page " +padeId);
+			// }
+
+			$scope.newPage = function (e,ele) {
+				$window.location.href = ('#/projects/new');
+				$scope.showNewPage = {boolean:true};
+			}
+
+	/*This query (GET) is called twice, add 
+		console.log(data);
+		To print see*/
+		$scope.pages = PagesFactory.query(function(data){
+			$scope.pages = data;
+		});
+	}]);
 
 myApp.controller('ContentCtrl', ['$scope', 'PagesFactory','BroadCastFactory','PageFactory',
 	function($scope, PagesFactory, BroadCastFactory, PageFactory){
