@@ -48,7 +48,7 @@
     Content Area Ctrl for Drop Elements
     */
     myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',function($scope,PageFactory, $routeParams) {
-
+        console.log($scope);
         $scope.my = { message: false };
         $scope.toggleClass1 = function(){
             console.log("toggle 1");
@@ -152,6 +152,7 @@
         console.log(e.toElement);
         $scope.imgX = e.pageX - 260;
         $scope.imgY = e.pageY - 130;
+        console.log()
 
         $scope.srcVar = "";
         //onDrop - showImage

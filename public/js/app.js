@@ -11,6 +11,10 @@ myApp.config(['$routeProvider',
   	templateUrl: 'templates/new-page.html',
   	controller: 'AddPageCtrl'
   }).
+  when('/projects/view', {
+    templateUrl: 'templates/view.html',
+    controller: 'AddPageCtrl'
+  }).
   when('/projects/:id', {
     templateUrl: 'templates/page-detail.html',
     controller: 'PageDetailCtrl'
