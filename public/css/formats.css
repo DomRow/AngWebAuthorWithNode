@@ -121,8 +121,8 @@
 
 .formatButton{
 	position: absolute;
-	
-	bottom:-70px;
+	left:200px;
+	bottom:-100px;
 }
 
 h2 {

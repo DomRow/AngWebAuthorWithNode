@@ -1,14 +1,21 @@
-<div class="right panel col-md-3" ng-controller="ElementCtrl"><h1>Elements</h1>
-		<ul dnd-list="list" class="list-group">
-			
-			<!-- <li><button tag="{{elements[1]}}" element-push ng-click="addElement(e,elements[1])" class="list-group-item">Image</button></li> -->
-			<li class="btn btn-primary" elementType="Image" data-drag="true" data-jqyoui-options="{revert: 'valid'}" jqyoui-draggable="{animate:false}">
-				<button tag="{{elements[3]}}" ng-click="addElement(e,elements[3])" class="list-group-item">Text</button></li>
-				
-			<li class="btn btn-primary" elementType="Image" data-drag="true" data-jqyoui-options="{revert: 'valid'}" jqyoui-draggable="{animate:false}">
-				<button tag="{{elements[1]}}" ng-click="addElement(e,elements[1])" 	class="list-group-item">Image</button></li>
-		</ul>
-	<div class="col-md-4" ng-controller="ElementListCtrl">
-		
+<div class="col-md-2 panel panel-default" ng-controller="ElementCtrl">
+	<div class="panel-heading">	
+		<h1 class="panel-title">Elements</h1>
 	</div>
+		<div class="panel-body">
+			<ul dnd-list="list" class="list-group">
+				
+				<!-- <li><button tag="{{elements[1]}}" element-push ng-click="addElement(e,elements[1])" class="list-group-item">Image</button></li> -->
+				<li class="btn btn-primary" elementType="Text" data-drag="true" data-jqyoui-options="{revert: 'valid'}" jqyoui-draggable="{animate:false}">
+					<span class="badge">{{useCount}}</span>
+					<button tag="{{elements[3]}}" ng-click="addElement(e,elements[3])" class="list-group-item">Text</button></li>
+					
+				<li class="btn btn-primary" elementType="Image" data-drag="true" data-jqyoui-options="{revert: 'valid'}" jqyoui-draggable="{animate:false}">
+					<span class="badge">{{useCount}}</span>
+					<button tag="{{elements[1]}}" ng-click="addElement(e,elements[1])" 	class="list-group-item">Image</button></li>
+			</ul>
+		<div class="col-md-4" ng-controller="ElementListCtrl">
+			
+		</div>
+	</div>	
 </div>		

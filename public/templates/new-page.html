@@ -1,6 +1,6 @@
 <div class="form left panel col-md-3" ng-controller="AddPageCtrl">
 	<h2>New Page</h2>		
-	<table>
+	<table class="table">
 		<form>	
 			<tr>	
 				<td><label>No: </label></td>
@@ -22,7 +22,7 @@
 			<tr>
 				<td><label>Layouts: </label></td>
 			    <td><select name="singleSelect" ng-model="page.body" ng-options="option.value for option in cssOptions.availableOptions"></select></td>
-			</tr>	
+			</tr>
 			<!-- <tr>
 				<td><label>CSS Template: </label></td>
 				<td><select class="form-control" ng-model="page.cssPage" ng-options="layout for layout in layouts" ng-change="cssEvent(e,item)"></td>

@@ -12,6 +12,8 @@
             BroadCastFactory.prepForBroadcast(e,ele);
         };
 
+        $scope.useCount = 3;
+
     }])
 
     myApp.controller("ElementListCtrl", ['$scope', 'BroadCastFactory','ModalService', function($scope, BroadCastFactory, ModalService) {
@@ -47,36 +49,50 @@
 /*
     Content Area Ctrl for Drop Elements
     */
-    myApp.controller("ContentAreaCtrl",['$scope','PageFactory', '$routeParams',function($scope,PageFactory, $routeParams) {
-        console.log($scope);
+    myApp.controller("ContentAreaCtrl",['$scope', '$window', 'PageFactory', '$routeParams',function($scope, $window, PageFactory, $routeParams) {
+
+        $scope.createNewFromBlank = function(){
+            $window.location.href = ('#/projects/new');
+        }
+
         $scope.my = { message: false };
         $scope.toggleClass1 = function(){
-            console.log("toggle 1");
-            $scope.pageObject.columns[0].items[0].cssClass = "defaultClass5";
-            $scope.pageObject.columns[0].items[1].cssClass = "defaultClass6";
-               
-        
-    }
+            if($scope.pageObj ==null){
+                $scope.createNewFromBlank();
+            }else{
+                console.log("toggle 1");
+                $scope.pageObject.columns[0].items[0].cssClass = "defaultClass5";
+                $scope.pageObject.columns[0].items[1].cssClass = "defaultClass6";        
+            };
+
+        }
 
     $scope.my = { message2: false };
     $scope.toggleClass2 = function(){
-        console.log("toggle 2");
-        //cycle through classes array and bind new value to columns object
-        $scope.pageObject.columns[0].items[0].cssClass = "defaultClass3";
-        $scope.pageObject.columns[0].items[1].cssClass = "defaultClass4";
+        if($scope.pageObj ==null){
+            $scope.createNewFromBlank();
+        }else{
+            console.log("toggle 2");
+            //cycle through classes array and bind new value to columns object
+            $scope.pageObject.columns[0].items[0].cssClass = "defaultClass3";
+            $scope.pageObject.columns[0].items[1].cssClass = "defaultClass4";
+        }
     }
 
     $scope.my = { message3: false };
     $scope.toggleClass3 = function(){
-        console.log("toggle 3");
-        //add a new "item" to the columns object
-        $scope.pageObject.columns[0].items[0].cssClass = "defaultClass7";
-        $scope.pageObject.columns[0].items[1].cssClass = "defaultClass8";
-        $scope.pageObject.columns[0].items[2] = {"cssClass":"defaultClass9"};
-        console.log($scope.pageObject);
-        //toggle 3rd div
-        $scope.addDiv3 = {boolean:true};
-        
+         if($scope.pageObj ==null){
+            $scope.createNewFromBlank();
+        }else{
+            console.log("toggle 3");
+            //add a new "item" to the columns object
+            $scope.pageObject.columns[0].items[0].cssClass = "defaultClass7";
+            $scope.pageObject.columns[0].items[1].cssClass = "defaultClass8";
+            $scope.pageObject.columns[0].items[2] = {"cssClass":"defaultClass9"};
+            //toggle 3rd div
+            $scope.addDiv3 = {boolean:true};
+        }
+               
     }
 
     $scope.$on('cssToggle1', function(event,data){

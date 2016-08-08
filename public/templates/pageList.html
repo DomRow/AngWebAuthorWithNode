@@ -1,20 +1,23 @@
-<div class="left panel col-md-3" ng-controller="AddPageCtrl" >
-		<div>
-			<h2>Page</h2>		
-			<button type="button" class="btn" ng-click="newPage()">Add</button>
-			<button type="button" class="btn" ng-click="editPage()">Edit</button>
-			<button type="button" class="btn" ng-click="deletePage()">Delete</button>
-			
+<div class="col-md-2 panel panel-default" ng-controller="AddPageCtrl" >
+	<div class="panel-heading">
+		<h1 class="panel-title">Page</h1>
+	</div>
+	<div class="panel-body">
+		<div class="btn-group btn-group-justified">
+		<ul class="list-inline ">					
+			<li><button type="button" class="btn" ng-click="newPage()">Add</button></li>
+			<li><button type="button" class="btn" ng-click="editPage()">Edit</button></li>
+			<li><button type="button" class="btn" ng-click="deletePage()">Delete</button></li>
+		</ul>	
 		</div>
-		
+
 		<div ng-controller="GetListCtrl">
 			<ul>
 				<li  ng-repeat="page in pages">
 					<a href="#" data-id="{{page._id}}" content-pop class="list-group-item" ng-click="displayHtml(e,page._id)" >X {{page.title}}</a>
 				</li>
 			</ul>
-
 		</div>
-
+	</div>	
 </div>
 
