@@ -164,13 +164,21 @@
     }
 
     $scope.dropFunc = function(e){
-        console.log(e.target.attributes.type);
-        console.log(e.toElement);
-        $scope.imgX = e.pageX - 260;
-        $scope.imgY = e.pageY - 130;
-        console.log()
+        //console.log(e);
+        if($scope.pageObj == null){
+            $window.location.href = ('#/projects/new');
+        }else{
+            var id = e.target.attributes.idno.value;
+            var newDivType = e.toElement.attributes.elementType.value;
+            var pageNo = $scope.pageObj.body.columns[0].items[id];
+            pageNo.type = newDivType;
+            if(pageNo.type == 'Image'){
+                console.log("Image type so bind extra properties");
+            }
+            $scope.imgX = e.pageX - 260;
+            $scope.imgY = e.pageY - 130;
 
-        $scope.srcVar = "";
+            $scope.srcVar = "";
         //onDrop - showImage
         $scope.addImage = {boolean:true}
         //boolean triggers directive to add image?
@@ -178,6 +186,8 @@
         //bind filename to src in jsonObj
         //bind width & height?
     }
+
+}
 
     /*Generate initial model in JSON format*/
     // for (var i = 1; i <= 3; ++i) {
