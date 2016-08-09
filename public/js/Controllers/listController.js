@@ -168,19 +168,23 @@
         if($scope.pageObj == null){
             $window.location.href = ('#/projects/new');
         }else{
+            console.log(e);
+            //angular.forEach()
             var id = e.target.attributes.idno.value;
             var newDivType = e.toElement.attributes.elementType.value;
             var pageNo = $scope.pageObj.body.columns[0].items[id];
             pageNo.type = newDivType;
             if(pageNo.type == 'Image'){
                 console.log("Image type so bind extra properties");
+                $scope.addImage = {boolean:true};
+                console.log($scope.addImage.boolean);
             }
             $scope.imgX = e.pageX - 260;
             $scope.imgY = e.pageY - 130;
 
             $scope.srcVar = "";
         //onDrop - showImage
-        $scope.addImage = {boolean:true}
+        
         //boolean triggers directive to add image?
         //upload file
         //bind filename to src in jsonObj
