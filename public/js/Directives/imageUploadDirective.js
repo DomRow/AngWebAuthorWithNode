@@ -1,4 +1,4 @@
-app.directive('uploadfile', function () {
+myApp.directive('uploadfile', function () {
     return {
       restrict: 'A',
       link: function(scope, element) {

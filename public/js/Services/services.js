@@ -10,7 +10,7 @@ myApp.factory("PageFactory", function($resource){
 	return $resource("/projects/:id", {id: '@_id'},{
 		get: { method: 'GET',params:{ id: '@_id' } },
 		update: { method: 'PUT'},
-		delete: { method: 'DELETE', params: {id:'@_id'} }
+		delete: { method: 'DELETE'}
 	})
 
 })

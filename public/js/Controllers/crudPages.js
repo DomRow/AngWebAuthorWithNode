@@ -64,16 +64,26 @@
 
 			/*Delete page function*/
 			$scope.deletePage = function(){
-				console.log("delete page clicked");
-				//currentPage = ?
-				//id = ?
-				//factory.delete(id)
-				//reloadPages()
+					alert("Are you sure you want to remove this page?");
+					$scope.currentPage = $scope.$parent.$parent.currentPage;
+					PageFactory.get({id: $scope.currentPage}, function(data){
+						var deleteMe = data._id;
+						console.log(data._id);
+						PageFactory.delete({id: deleteMe}, function(){
+							console.log("Done?");
+						}, function(err){
+							console.log("error");
+							console.log(err);
+						})
+					});
+								
+				$scope.reloadPages();
 			};
 
 			/*Event handler for 'eventSend'*/
 			$scope.$on('eventSend', function(event,data){
-				var id = $scope.pageNumber = data;	
+				$scope.pageNumber = data;
+				console.log($scope);
 			});
 
 
