@@ -5,7 +5,7 @@
         $scope.elements = {
             1 : '<img>',
             2 : '<article></article>',
-            3 : '<textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>'
+            3 : '<textarea"></textarea>'
         }
         $scope.addElement = function(e,ele){
             $scope.event = e = 'elementSend';
@@ -123,9 +123,9 @@
 
     };  
     /*Click function displays text editor*/
-    $scope.tinyMceLoad = function(){
+    $scope.textEditorShow = function(){
         console.log("Text Area Click");
-        $scope.mceVisibility = {boolean: true};
+        $scope.textEditor = {boolean: true};
     }
 
     $scope.$on('eventSend', function(event,data){  
@@ -139,7 +139,7 @@
     })
 
     $scope.$on('elementSend', function(event, data){
-        $scope.mceVisibility = {boolean: true};
+        $scope.textEditor = {boolean: true};
     })
     
     $scope.savePtext = function(){
@@ -160,7 +160,7 @@
     }
 
     $scope.closeModal = function(){
-        $scope.mceVisibility = {boolean: false};  
+        $scope.textEditor = {boolean: false};  
     }
 
     $scope.dropFunc = function(e){

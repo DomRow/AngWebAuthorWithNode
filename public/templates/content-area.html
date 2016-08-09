@@ -17,7 +17,7 @@
 
 	<div class="{{pageObject.columns[0].items[1].cssClass}}" idNo="{{pageObject.columns[0].items[1].id}}" type="{{pageObject.columns[0].items[1].type}}" data-drop="true" data-jqyoui-options jqyoui-droppable="{onDrop:'dropFunc'}" ng-show="!my.message" ng-hide="my.message" ng-click="alert(this)"><h1 class="{{pageObject.columns[0].items[1].type}}" style="{{pageObject.columns[0].items[1].headerStyle}}">{{pageObject.columns[0].items[1].headerText}}</h1>
 		<div>{{pageObject.columns[0].items[1].type}}</div>
-		<p class="{{pageObject.columns[0].items[1].type}}" style="{{pageObject.columns[0].items[1].headerStyle}}" ng-click="tinyMceLoad()" ng-bind-html="pageObject.columns[0].items[1].text"></p></div>
+		<p class="{{pageObject.columns[0].items[1].type}}" style="{{pageObject.columns[0].items[1].headerStyle}}" ng-click="textEditorShow()" ng-bind-html="pageObject.columns[0].items[1].text"></p></div>
 		
 		
 
@@ -42,7 +42,7 @@
 			</ul>
 		</div>
 
-		<div class="z1" ng-show="mceVisibility.boolean">
+		<div class="z1" ng-show="textEditor.boolean">
 		<!-- Modal -->
 		<div class="z1" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
