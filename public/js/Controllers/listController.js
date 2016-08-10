@@ -177,9 +177,7 @@
             var pageNo = $scope.pageObj.body.columns[0].items[id];
             pageNo.type = newDivType;
             if(pageNo.type == 'Image'){
-                console.log("Image type so bind extra properties");
                 $scope.addImage = {boolean:true};
-                console.log($scope.addImage.boolean);
             }
             $scope.imgX = e.pageX - 260;
             $scope.imgY = e.pageY - 130;
@@ -193,6 +191,13 @@
         //bind width & height?
     }
 
+    $scope.changeFunc = function(e){
+        console.log("changeFunc");
+    }
+
+    $scope.onFilesSelected = function(files) {
+     console.log("files - " + files);
+    };
 }
 
 
