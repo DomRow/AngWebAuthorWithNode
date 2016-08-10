@@ -49,7 +49,7 @@
 /*
     Content Area Ctrl for Drop Elements
     */
-    myApp.controller("ContentAreaCtrl",['$scope', '$window', 'PageFactory', '$routeParams',function($scope, $window, PageFactory, $routeParams) {
+    myApp.controller("ContentAreaCtrl",['$scope', '$window', 'PageFactory', '$routeParams','BroadCastFactory',function($scope, $window, PageFactory, $routeParams,BroadCastFactory) {
 
         $scope.createNewFromBlank = function(){
             $window.location.href = ('#/projects/new');
@@ -165,6 +165,10 @@
 
     $scope.dropFunc = function(e){
         //console.log(e);
+        // $scope.event = ev = 'imageDrop';
+        // BroadCastFactory.prepForBroadcast(ev);
+        dropEventWatch = {boolean: true};
+        console.log(dropEventWatch);
         if($scope.pageObj == null){
             $window.location.href = ('#/projects/new');
         }else{
@@ -192,6 +196,11 @@
     }
 
 }
+
+
+    // $scope.$on('imageDrop', function(event, data){
+    //     dropEventWatch = {boolean: true};
+    // })
 
     /*Generate initial model in JSON format*/
     // for (var i = 1; i <= 3; ++i) {
