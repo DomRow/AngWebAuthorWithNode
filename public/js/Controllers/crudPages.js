@@ -58,7 +58,6 @@
 			};
 
 			$scope.$on('eventSend', function(e, data){
-				console.log("AddPageCtrl event rec");
 				$scope.pageId = data;
 			})
 
@@ -83,7 +82,6 @@
 			/*Event handler for 'eventSend'*/
 			$scope.$on('eventSend', function(event,data){
 				$scope.pageNumber = data;
-				console.log($scope);
 			});
 
 

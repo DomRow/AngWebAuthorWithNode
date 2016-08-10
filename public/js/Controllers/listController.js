@@ -167,13 +167,11 @@
         //console.log(e);
         // $scope.event = ev = 'imageDrop';
         // BroadCastFactory.prepForBroadcast(ev);
-        dropEventWatch = {boolean: true};
-        console.log(dropEventWatch);
+        $scope.dropEventWatch = {boolean: true};
+        console.log($scope.dropEventWatch);
         if($scope.pageObj == null){
             $window.location.href = ('#/projects/new');
         }else{
-            console.log(e);
-            //angular.forEach()
             var id = e.target.attributes.idno.value;
             var newDivType = e.toElement.attributes.elementType.value;
             var pageNo = $scope.pageObj.body.columns[0].items[id];

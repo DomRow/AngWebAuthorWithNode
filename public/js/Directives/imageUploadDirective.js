@@ -1,12 +1,11 @@
 myApp.directive('uploadfile', function () {
     return {
-      restrict: 'A',
-      scope: {dropEventWatch: '@'},
-      link: function(scope, element) {
-      	//when dropEventWatch changes, trigger clcik
-        element.bind('click', function(e) {
-            angular.element(e.target).trigger('click');
-        });
+      scope: {dropeventwatch: '='},
+      link: function($scope, element, attrs) {
+      		$scope.self = element;
+      		$scope.$watch("dropeventwatch", function(s,element, attrs){
+      			angular.element($scope.self).trigger('click');
+      		})
       }
     };
 });
