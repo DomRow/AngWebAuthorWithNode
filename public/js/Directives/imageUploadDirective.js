@@ -9,3 +9,21 @@ myApp.directive('uploadfile', function () {
       }
     };
 });
+
+
+myApp.directive('addImageTag', function(){
+	return{
+		require: '^^uploadfile',
+		restrict: 'E',
+		replace: true,
+		scope:{
+			imageSource: '='
+		},
+		template: "<img src='{{imageSource}}' height=100 width=100>",
+		
+		link: function($scope, element, attrs){
+
+		}
+
+	}
+})

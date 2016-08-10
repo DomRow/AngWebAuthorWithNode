@@ -7,7 +7,9 @@
 	<div idNo="{{pageObject.columns[0].items[0].id}}" class="{{pageObject.columns[0].items[0].cssClass}}" type="{{pageObject.columns[0].items[0].type}}" data-drop="true" data-jqyoui-options jqyoui-droppable="{onDrop:'dropFunc'}" ng-show="!my.message" ng-hide="my.message">
 		<a href style="display:block;position:absolute;left:{{imgX}}px; top:{{imgY}}px;"><img src="{{pageObject.columns[0].items[0].image.src}}" style="position:relative;" width="{{pageObject.columns[0].items[0].image.width}}" height="{{pageObject.columns[0].items[0].image.height}}" align="{{pageObject.columns[0].items[0].image.align}}" ng-click="alert(this)" ng-if="addImage.boolean"></a>
 		
-		<a href="javascript:void(0)" style="display:block;position:absolute;left:{{imgX}}px; top:{{imgY}}px;"><input id="upload" type="file" uploadfile dropeventwatch="dropEventWatch.boolean"/></a>
+		<a href="javascript:void(0)" style="display:block;position:absolute;left:{{imgX}}px; top:{{imgY}}px;"><input id="upload" type="file" uploadfile dropeventwatch="dropEventWatch.boolean"/>
+			<addimagetag></addimagetag>
+		</a>
 		
 		<!-- <image-drop class="findme" ng-if="addImage.boolean">SCOPES</image-drop> -->
 		<div>{{pageObject.columns[0].items[0].type}}</div>
