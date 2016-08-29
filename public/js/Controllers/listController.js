@@ -21,18 +21,16 @@
     myApp.controller('ElementListCtrl', ElementListCtrl);
 
     function ElementListCtrl($scope, BroadCastFactory, ModalService){
-        $scope.models = {
-            selected: null,
-            lists: {"A": []}
-        };
+
+        $scope.showImageDiv = {toggle:false};
+
+        $scope.imageList = ["building1.jpg","construction1.jpg","shipyard1.jpg"];
 
         $scope.show = {message : false};
 
         var tags = $scope.dataItems = ["Image"];
 
-        for (var i = 0; i <= tags.length; i++) {
-            $scope.models.lists.A.push({label: tags[i]});
-        }
+        
 
         $scope.$watch('models', function(model) {
             $scope.modelAsJson = angular.toJson(model, true);
