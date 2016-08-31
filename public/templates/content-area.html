@@ -1,3 +1,4 @@
+
 <div class="content panel col-md-6" ng-controller="ContentAreaCtrl">
 	<ul>
 		<li ng-repeat="page in pageObject.columns"></li>
@@ -14,7 +15,7 @@
 		<div>{{pageObject.columns[0].items[0].type}}</div>
 
 	</div>
-	<!------>
+	<!------
 	<div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]"
                   file="image" file-name="imageFileName" data-max-file-size="3">
       <span>Drop Image Here</span>
@@ -23,6 +24,14 @@
       <img ng-src={{image}} />
       <span class="file-name">{{imageFileName}}</span>
     </div>
+	------>
+	<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+		<div id="image_preview"><img id="previewimg" src="noimage.png"/></div>
+		<div id="selectImage">
+			<input type="file" name="file" id="file" required/>
+			<input type="button" value="Upload" class="submit"/>
+		</div>	
+	</form>	
 	<!------>	
 	<div class="{{pageObject.columns[0].items[1].cssClass}}" idNo="{{pageObject.columns[0].items[1].id}}" type="{{pageObject.columns[0].items[1].type}}" data-drop="true" data-jqyoui-options jqyoui-droppable="{onDrop:'dropFunc'}" ng-show="!my.message" ng-hide="my.message" ng-click="alert(this)"><h1 class="{{pageObject.columns[0].items[1].type}}" style="{{pageObject.columns[0].items[1].headerStyle}}">{{pageObject.columns[0].items[1].headerText}}</h1>
 		<div>{{pageObject.columns[0].items[1].type}}</div>
